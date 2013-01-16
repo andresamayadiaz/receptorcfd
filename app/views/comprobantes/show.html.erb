@@ -1,0 +1,35 @@
+<%- model_class = Comprobante -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:uuid) %>:</strong></dt>
+  <dd><%= @comprobante.uuid %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:serie) %>:</strong></dt>
+  <dd><%= @comprobante.serie %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:folio) %>:</strong></dt>
+  <dd><%= @comprobante.folio %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:rfcemisor) %>:</strong></dt>
+  <dd><%= @comprobante.rfcemisor %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:rfcreceptor) %>:</strong></dt>
+  <dd><%= @comprobante.rfcreceptor %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:fecha) %>:</strong></dt>
+  <dd><%= @comprobante.fecha %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:total) %>:</strong></dt>
+  <dd><%= @comprobante.total %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:subtotal) %>:</strong></dt>
+  <dd><%= @comprobante.subtotal %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              comprobantes_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_comprobante_path(@comprobante), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              comprobante_path(@comprobante),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

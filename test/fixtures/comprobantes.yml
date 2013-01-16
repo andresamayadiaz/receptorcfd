@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  uuid: MyString
+  serie: MyString
+  folio: 1
+  rfcemisor: MyText
+  rfcreceptor: MyText
+  fecha: 2013-01-15 22:30:03
+  total: 9.99
+  subtotal: 9.99
+
+two:
+  uuid: MyString
+  serie: MyString
+  folio: 1
+  rfcemisor: MyText
+  rfcreceptor: MyText
+  fecha: 2013-01-15 22:30:03
+  total: 9.99
+  subtotal: 9.99
