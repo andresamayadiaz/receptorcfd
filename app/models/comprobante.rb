@@ -8,10 +8,11 @@ class Comprobante < ActiveRecord::Base
   def validate
     
     # open("http://www.sat.gob.mx/cfd/3/cfdv32.xsd")
-    doc = Nokogiri::XML( File.read("/Users/andresamayadiaz/Documents/rails/receptorcfd/public/comp32.xml"), nil, "UTF-8", Nokogiri::XML::ParseOptions::RECOVER )
+    doc = Nokogiri::XML( File.read("/Users/andresamayadiaz/Documents/rails/receptorcfd/public/comprobante32.xml") )
     
     #puts "KEYS: " + doc.root.keys.to_s
     #puts "Schema: " + doc.root["xsi:schemaLocation"]
+    #puts doc.xpath("//*[@xsi:schemaLocation]")
     
     schemata_by_ns = Hash[ doc.root["xsi:schemaLocation"].scan(/(\S+)\s+(\S+)/) ]
     schema_final = "<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' elementFormDefault='qualified' attributeFormDefault='unqualified'>"
