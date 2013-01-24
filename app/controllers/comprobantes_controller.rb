@@ -1,4 +1,21 @@
 class ComprobantesController < ApplicationController
+  
+  require 'nokogiri'
+  require 'open-uri'
+  
+  def validate
+    
+    doc = Nokogiri.XML( "/public/comprobante32.xml" )
+    schemata_by_ns = Hash[ doc.root['schemaLocation'].scan(/(\S+)\s+(\S+)/) ]
+    schemata_by_ns.each do |ns,xsd_uri|
+      xsd = Nokogiri::XML.Schema(open(xsd_uri))
+      xsd.validate(doc).each do |error|
+        puts error.message
+      end
+    end
+    
+  end
+  
   # GET /comprobantes
   # GET /comprobantes.json
   def index

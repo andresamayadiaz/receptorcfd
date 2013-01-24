@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bfa2="http://www.buzonfiscal.com/ns/addenda/bf/2" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" LugarExpedicion="SAN PEDRO GARZA GARCIA Nuevo León" metodoDePago="No identificado" tipoDeComprobante="ingreso" total="1357.20" Moneda="MXN" TipoCambio="1" descuento="0.00" subTotal="1170.00" certificado="MIIEoTCCA4mgAwIBAgIUMDAwMDEwMDAwMDAyMDA0MjgzNDMwDQYJKoZIhvcNAQEFBQAwggGVMTgwNgYDVQQDDC9BLkMuIGRlbCBTZXJ2aWNpbyBkZSBBZG1pbmlzdHJhY2nDs24gVHJpYnV0YXJpYTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMSEwHwYJKoZIhvcNAQkBFhJhc2lzbmV0QHNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxFDASBgNVBAcMC0N1YXVodMOpbW9jMRUwEwYDVQQtEwxTQVQ5NzA3MDFOTjMxPjA8BgkqhkiG9w0BCQIML1Jlc3BvbnNhYmxlOiBDZWNpbGlhIEd1aWxsZXJtaW5hIEdhcmPDrWEgR3VlcnJhMB4XDTEyMDIyODE1NTY0NloXDTE2MDIyODE1NTY0NlowgeIxLDAqBgNVBAMTI0NBUFRJVkEgVEVDTk9MT0dJQSBESUdJVEFMIFNBIERFIENWMSwwKgYDVQQpEyNDQVBUSVZBIFRFQ05PTE9HSUEgRElHSVRBTCBTQSBERSBDVjEsMCoGA1UEChMjQ0FQVElWQSBURUNOT0xPR0lBIERJR0lUQUwgU0EgREUgQ1YxJTAjBgNVBC0THENURDA5MDMwMzhJNyAvIEFBQ0E1OTAxMDFVVjQxHjAcBgNVBAUTFSAvIEFBQ0E1OTAxMDFNVFNOTlIwMDEPMA0GA1UECxMGdW5pZGFkMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPB/PLJx95uH+s2WlMlrNcl6CBSLMiKK7bjfjuSQKkX7hB3urm+Sc1oHCPW0H+4nJBXl0ImJNFiRtGZP0vx94Jb1Ed/iz3UhKsXBhDcYuKo/oWbrQVabvE3QVOs/P5LqtpD9HzcC5S5pzAjLqli6hVVY1zi69rVubqu05QqdUEKwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEARpU89NsyogoLWXXDTp8EX5aBCdVXX2BBZLqjkUVL8ZWdWLyg/a6haDlDp7901FNIaxzpfa/v+KVKCMC9Ghu8WAf+xMH1JrWQxXnXjHX21yWMdokpGoKpijuDllJNGzcs6ZpPYEwcWanzQGDYeUrKsMoyZYqHYrlKgfYuJ9RuhwtL1VLosBKwo8QoXWKOHxvQId7aCDtarHN11k6J/Iou35tdvuq9uldamAAa7gBu2ftsJQK+veuCYx1vTwNP9vGRP0UufsMFdTnT7R4kZUw4SnmaxxYOt50UZ1urmJFmc0vDfiRimGLRB9po+ZU53hHfmsC95vaISf8b/nez8CphCw==" noCertificado="00001000000200428343" formaDePago="Pago en una sola exhibición" sello="q/o1Y8YdiKud2GUC0tB7lExp9PFNTPZT+UiEjDg6cSuwdCZNhIK0TgufNYK1Kv7n5nbCNQj1DWo/bn/yLO1C45pRHOAN/9d52NbgMP3dytlEquFBXzRGMhcREXyJNBCvPHbTBpzG9TyxjedilTRyQP1gorQFS1UHy94Vmcn2vbs=" fecha="2012-11-05T15:49:54" folio="72" serie="A" version="3.2" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/TimbreFiscalDigital/TimbreFiscalDigital.xsd http://www.buzonfiscal.com/ns/addenda/bf/2 http://www.buzonfiscal.com/schema/xsd/Addenda_BF_v20.xsd">
+    <cfdi:Emisor nombre="CAPTIVA TECNOLOGIA DIGITAL S.A. DE C.V." rfc="CTD0903038I7">
+        <cfdi:DomicilioFiscal codigoPostal="66250" pais="México" estado="Nuevo León" municipio="SAN PEDRO GARZA GARCIA" localidad="SAN PEDRO GARZA GARCIA" colonia="BOSQUES DEL VALLE" noInterior="6" noExterior="103" calle="BOSQUES DEL CANADA" />
+        <cfdi:RegimenFiscal Regimen="Regimen General " />
+    </cfdi:Emisor>
+    <cfdi:Receptor nombre="JOSE ROGELIO MENDOZA REYNOSA" rfc="MERR410121BN3">
+        <cfdi:Domicilio codigoPostal="64630" pais="Mexico " estado="Nuevo Leon " municipio="Monterrey " colonia="COLINAS DE SAN JERONIMO " noExterior="174" calle="PABLO MONCAYO " />
+    </cfdi:Receptor>
+    <cfdi:Conceptos>
+        <cfdi:Concepto importe="1170.00" valorUnitario="1170.00" descripcion="CloudHosting Cloud Server Hosting Nov 2012 100 Seguros " unidad="servicio " cantidad="1.00" />
+    </cfdi:Conceptos>
+    <cfdi:Impuestos totalImpuestosTrasladados="187.20">
+        <cfdi:Traslados>
+            <cfdi:Traslado importe="187.20" tasa="16.00" impuesto="IVA" />
+        </cfdi:Traslados>
+    </cfdi:Impuestos>
+    <cfdi:Complemento>
+        <tfd:TimbreFiscalDigital selloSAT="hm/7FOZL3HTVvbCQDDUWpzLWRhm0aW/36qw/ZO+a5owxOPlX/VQL1/TnEaKsQC/8fhwfBnOnTarIR4oo8bVCp1TdvHUWYeKuU0gkqSr2zPcEvpaHI4PTLrWhrIstZj7ifJNvwv13VVFXowxHWmySkWxfZ/poQNsIabULWeYG/cE=" noCertificadoSAT="00001000000102553368" selloCFD="q/o1Y8YdiKud2GUC0tB7lExp9PFNTPZT+UiEjDg6cSuwdCZNhIK0TgufNYK1Kv7n5nbCNQj1DWo/bn/yLO1C45pRHOAN/9d52NbgMP3dytlEquFBXzRGMhcREXyJNBCvPHbTBpzG9TyxjedilTRyQP1gorQFS1UHy94Vmcn2vbs=" FechaTimbrado="2012-11-05T15:49:54" UUID="1e8d7c36-7940-434e-aac0-1dfeb1aa5bfd" version="1.0" />
+    </cfdi:Complemento>
+    <cfdi:Addenda>
+        <bfa2:AddendaBuzonFiscal version="2.0">
+            <bfa2:Emisor emailComercial="a.amaya@captivatecnologia.com" emailNotificaciones="a.amaya@captivatecnologia.com" telefono="8184483838" />
+            <bfa2:Receptor noCliente="008" />
+            <bfa2:TipoDocumento descripcion="Factura" nombreCorto="FAC" />
+            <bfa2:CFD totalConLetra="Mil trescientos cincuenta y siete pesos 20/100 M.N." tipoMoneda="MXN" />
+            <bfa2:Extra valor="1357.2" atributo="T*TOTAL" />
+        </bfa2:AddendaBuzonFiscal>
+    </cfdi:Addenda>
+</cfdi:Comprobante>

@@ -40,3 +40,4 @@ gem 'jquery-rails'
 # aad
 # gem 'bootstrap-sass', '~> 2.2.2.0'
 gem "twitter-bootstrap-rails", "~> 2.2.0"
+gem 'nokogiri'
