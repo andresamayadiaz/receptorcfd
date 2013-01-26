@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  
+  before_create :set_user_rol
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -6,6 +9,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
          
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :rol
   # attr_accessible :title, :body
+  
+  # set default rol
+  def set_user_rol
+  	self.rol = 0
+  end
+  
 end
