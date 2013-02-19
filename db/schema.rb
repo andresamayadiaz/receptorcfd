@@ -11,7 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130126011545) do
+ActiveRecord::Schema.define(:version => 20130219031431) do
+
+  create_table "cfdcsds", :force => true do |t|
+    t.string   "no_serie",         :null => false
+    t.datetime "fec_inicial_cert", :null => false
+    t.datetime "fec_final_cert",   :null => false
+    t.string   "RFC",              :null => false
+    t.string   "edo_certificado",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "cfdfolios", :force => true do |t|
+    t.string   "RFC"
+    t.string   "NoAprobacion"
+    t.string   "AnoAprobacion"
+    t.string   "Serie"
+    t.integer  "FolioInicial"
+    t.integer  "FolioFinal"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "comprobantes", :force => true do |t|
     t.string   "uuid"
@@ -20,10 +41,10 @@ ActiveRecord::Schema.define(:version => 20130126011545) do
     t.text     "rfcemisor"
     t.text     "rfcreceptor"
     t.datetime "fecha"
-    t.decimal  "total"
-    t.decimal  "subtotal"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.decimal  "total",       :precision => 10, :scale => 0
+    t.decimal  "subtotal",    :precision => 10, :scale => 0
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   create_table "users", :force => true do |t|

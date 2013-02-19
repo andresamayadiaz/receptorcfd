@@ -2,7 +2,6 @@ class Comprobante < ActiveRecord::Base
   
   require 'nokogiri'
   require 'open-uri'
-  require 'mysql2'
   
   attr_accessible :fecha, :folio, :rfcemisor, :rfcreceptor, :serie, :subtotal, :total, :uuid
   
@@ -37,7 +36,7 @@ class Comprobante < ActiveRecord::Base
 	    
     end
     schema_final += "</xs:schema>"
-    puts "SCHEMA FINAL: " + schema_final
+    #puts "SCHEMA FINAL: " + schema_final
     schema2 = Nokogiri::XML::Schema.new(schema_final)
     
     #puts ">>>>> VALID? " + schema2.valid?(doc).to_s
@@ -55,20 +54,39 @@ class Comprobante < ActiveRecord::Base
   
   # Validar la fecha del Comprobante contra la fecha de validez del certificado
   def validate_certificado(xml_file_path)
-  
-  		client = Mysql2::Client.new(:host => "192.168.100.251", :username => "root", :password => "ceis12345", :port => 3306, :database => "facturasoft")
-  		puts "CLIENT: " + client.inspect
-  		results = client.query("SELECT * FROM cfdfolios LIMIT 10")
-  		puts results.count
-  		results.each do |row|
-		  # conveniently, row is a hash
-		  # the keys are the fields, as you'd expect
-		  # the values are pre-built ruby primitives mapped from their corresponding field types in MySQL
-		  # Here's an otter: http://farm1.static.flickr.com/130/398077070_b8795d0ef3_b.jpg
-		  
-		  puts row.to_s
-		  
-		end
+	
+	doc = Nokogiri.XML( File.read(xml_file_path) )
+	@no_serie = doc.root.attribute("noCertificado").to_s
+	@fecha = doc.root.attribute("fecha").to_s
+	@rfc_emisor = doc.root.xpath("//cfdi:Emisor").attribute("rfc").to_s
+	puts "RFC Emisor: " + @rfc_emisor
+	#puts "No Certificado: " + @no_serie
+	#@cert = Cfdcsds.where(:no_serie => @no_serie)
+	
+	# @TODO: add index to table cfdcsds => no_serie
+	@cert = Cfdcsds.find(:first, :conditions => ["no_serie = ?", @no_serie])
+	puts @cert.to_json
+	
+	# 1. validate no_serie exists and is the correct RFC
+	if @cert.nil?
+		return false
+	end
+	
+	# 2. validate RFC matches certificate RFC
+	if @cert.RFC.upcase != @rfc_emisor.upcase
+		puts "OPS!! RFC in XML does not match certificate"
+		return false
+	end
+	
+	# 3. validate cert date against cfd date
+	# testing @cert.fec_final_cert = "2013-01-22T00:41:49Z"
+	if Time.parse(@fecha).between?(@cert.fec_inicial_cert, @cert.fec_final_cert) #and @cert.edo_certificado != 'C'
+		#puts "YEI, Date between is OK"
+	else
+		puts "OPS!! Date is not betwen"
+		return false
+	end
+	
   
   end
   
@@ -79,10 +97,32 @@ class Comprobante < ActiveRecord::Base
   
   end
   
-  # Validar serie y folio / Solo para CFDv2.0+
-  def validate_serie_folio(xml_file_path)
-  
+  # Validar el estado del Emisor y Receptor
+  def validate_state(xml_file_path)
   	
+  	doc = Nokogiri.XML( File.read(xml_file_path) )
+  	@estado_emisor = doc.root.xpath("//cfdi:Emisor").attribute("rfc").to_s
+  	
+  	estados = [ 'Aguascalientes', 'Baja California', 'Baja California Sur', 'Campeche', 'Chiapas', 'Chihuahua', 'Coahuila de Zaragoza', 'Coahuila', 'Colima', 'Durango', 'Guanajuato', 'Guerrero', 'Hidalgo', 'Jalisco', 'Mexico', 'México', 'Michoacán de Ocampo', 'Michoacan de Ocampo', 'Michoacán', 'Michoacan', 'Morelos', 'Nayarit', 'Nuevo León', 'Nuevo Leon', 'Oaxaca', 'Puebla', 'Querétaro', 'Queretaro', 'Quintana Roo', 'San Luis Potosí', 'San Luis Potosi', 'Sinaloa', 'Sonora', 'Tabasco', 'Tamaulipas', 'Tlaxcala', 'Veracruz de Ignacio de la Llave', 'Veracruz', 'Yucatán', 'Yucatan', 'Zacatecas', 'Distrito Federal', 'D.F.' ]
+  
+  end
+  
+  # Validar serie y folio / Solo para CFDv2.0 y 2.2
+  def validate_serie_folio(xml_file_path)
+  	
+  	doc = Nokogiri.XML( File.read(xml_file_path) )
+  	@serie = doc.root.attribute("serie").to_s
+  	@folio = doc.root.attribute("folio").to_s
+  	
+  	# @TODO: add index to table cfdfolios => serie, folioinicial, foliofinal
+  	@serfol = Cfdfolios.find(:first, :conditions => ["Serie = ? AND FolioInicial <= ? AND FolioFinal >= ?", @serie, @folio, @folio])
+  	
+  	if @serfol.nil?
+  		puts "OPS!! Folio Not Found"
+  		return false
+  	else
+  		puts @serfol.to_json
+  	end
   
   end
   

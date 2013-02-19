@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  RFC: MyString
+  NoAprobacion: MyString
+  AnoAprobacion: MyString
+  Serie: MyString
+  FolioInicial: 1
+  FolioFinal: 1
+
+two:
+  RFC: MyString
+  NoAprobacion: MyString
+  AnoAprobacion: MyString
+  Serie: MyString
+  FolioInicial: 1
+  FolioFinal: 1

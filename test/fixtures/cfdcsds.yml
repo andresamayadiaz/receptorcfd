@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  no_serie: MyString
+  fec_inicial_cert: 2013-02-18 18:24:03
+  fec_final_cert: 2013-02-18 18:24:03
+  RFC: MyString
+  edo_certificado: MyString
+
+two:
+  no_serie: MyString
+  fec_inicial_cert: 2013-02-18 18:24:03
+  fec_final_cert: 2013-02-18 18:24:03
+  RFC: MyString
+  edo_certificado: MyString
