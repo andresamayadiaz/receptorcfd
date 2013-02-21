@@ -1,7 +1,7 @@
 class Cfd20 < ApplicationController
 	
 	require 'nokogiri'
-	attr_accessible :version, :serie, :folio, :fecha, :sello, :noAprobacion, :anoAprobacion, :tipoDeComprobante, :formaDePago, :condicionesDePago, :noCertificado, :certificado, :subTotal, :descuento, :total, :metodoDePago, :LugarExpedicion, :NumCtaPago, :TipoCambio, :Moneda, :Emisor, :Receptor
+	attr_accessible :version, :serie, :folio, :fecha, :sello, :noAprobacion, :anoAprobacion, :tipoDeComprobante, :formaDePago, :condicionesDePago, :noCertificado, :certificado, :subTotal, :descuento, :total, :metodoDePago, :LugarExpedicion, :Emisor, :Receptor
 		
 	def from_xml(xml_file_path)
 		
@@ -23,11 +23,8 @@ class Cfd20 < ApplicationController
 		@total = doc.root.attribute("total").to_s
 		@metodoDePago = doc.root.attribute("metodoDePago").to_s
 		@LugarExpedicion = doc.root.attribute("LugarExpedicion").to_s
-		@NumCtaPago = doc.root.attribute("NumCtaPago").to_s
-		@TipoCambio = doc.root.attribute("TipoCambio").to_s
-		@Moneda = doc.root.attribute("Moneda").to_s
 		@Emisor = Emisor.from_xml_doc (doc)
-		@Receptor = 
+		@Receptor = Receptor.from_xml_doc (doc)
 		
 	end
 
@@ -37,9 +34,11 @@ class Emisor < ApplicationController
 
 	attr_accessible :rfc, :nombre, :DomicilioFiscal	
 	
-	def from_xml_doc (xml_doc)
+	def from_xml_doc (doc)
 	
-		
+		@rfc = doc.root.xpath("//Emisor").attribute("rfc").to_s
+		@nombre = doc.root.xpath("//Emisor").attribute("nombre").to_s
+		@DomicilioFiscal = DomicilioFiscal.from_xml_doc(doc)
 	
 	end
 
@@ -49,17 +48,39 @@ class DomicilioFiscal < ApplicationController
 
 	attr_accessible :calle, :noExterior, :noInterior, :colonia, :localidad, :municipio, :estado, :pais, :codigoPostal
 
+	def from_xml_doc (doc)
+	
+		@calle = doc.root.xpath("//Emisor//DomicilioFiscal").attribute("calle").to_s
+		@noExterior = doc.root.xpath("//Emisor//DomicilioFiscal").attribute("noExterior").to_s
+		@noInterior = doc.root.xpath("//Emisor//DomicilioFiscal").attribute("noInterior").to_s
+		@colonia = doc.root.xpath("//Emisor//DomicilioFiscal").attribute("colonia").to_s
+		@localidad = doc.root.xpath("//Emisor//DomicilioFiscal").attribute("localidad").to_s
+		@municipio = doc.root.xpath("//Emisor//DomicilioFiscal").attribute("municipio").to_s
+		@estado = doc.root.xpath("//Emisor//DomicilioFiscal").attribute("estado").to_s
+		@pais = doc.root.xpath("//Emisor//DomicilioFiscal").attribute("pais").to_s
+		@codigoPostal = doc.root.xpath("//Emisor//DomicilioFiscal").attribute("codigoPostal").to_s
+	
+	end
+
 end
 
 class ExpedidoEn < ApplicationController
 
 	attr_accessible :calle, :noExterior, :noInterior, :colonia, :localidad, :municipio, :estado, :pais, :codigoPostal
 
-end
-
-class RegimenFiscal < ApplicationController
-
-	attr_accessible :Regimen
+	def from_xml_doc (doc)
+	
+		@calle = doc.root.xpath("//Emisor//ExpedidoEn").attribute("calle").to_s
+		@noExterior = doc.root.xpath("//Emisor//ExpedidoEn").attribute("noExterior").to_s
+		@noInterior = doc.root.xpath("//Emisor//ExpedidoEn").attribute("noInterior").to_s
+		@colonia = doc.root.xpath("//Emisor//ExpedidoEn").attribute("colonia").to_s
+		@localidad = doc.root.xpath("//Emisor//ExpedidoEn").attribute("localidad").to_s
+		@municipio = doc.root.xpath("//Emisor//ExpedidoEn").attribute("municipio").to_s
+		@estado = doc.root.xpath("//Emisor//ExpedidoEn").attribute("estado").to_s
+		@pais = doc.root.xpath("//Emisor//ExpedidoEn").attribute("pais").to_s
+		@codigoPostal = doc.root.xpath("//Emisor//ExpedidoEn").attribute("codigoPostal").to_s
+	
+	end
 
 end
 
@@ -67,9 +88,11 @@ class Receptor < ApplicationController
 
 	attr_accessible :rfc, :nombre, :Domicilio	
 	
-	def from_xml_doc(xml_doc)
+	def from_xml_doc (doc)
 	
-		
+		@rfc = doc.root.xpath("//Receptor").attribute("rfc").to_s
+		@nombre = doc.root.xpath("//Receptor").attribute("nombre").to_s
+		@Domicilio = Domicilio.from_xml_doc(doc)
 	
 	end
 
@@ -78,6 +101,20 @@ end
 class Domicilio < ApplicationController
 
 	attr_accessible :calle, :noExterior, :noInterior, :colonia, :localidad, :municipio, :estado, :pais, :codigoPostal
+
+	def from_xml_doc (doc)
+	
+		@calle = doc.root.xpath("//Receptor//Domicilio").attribute("calle").to_s
+		@noExterior = doc.root.xpath("//Receptor//Domicilio").attribute("noExterior").to_s
+		@noInterior = doc.root.xpath("//Receptor//Domicilio").attribute("noInterior").to_s
+		@colonia = doc.root.xpath("//Receptor//Domicilio").attribute("colonia").to_s
+		@localidad = doc.root.xpath("//Receptor//Domicilio").attribute("localidad").to_s
+		@municipio = doc.root.xpath("//Receptor//Domicilio").attribute("municipio").to_s
+		@estado = doc.root.xpath("//Receptor//Domicilio").attribute("estado").to_s
+		@pais = doc.root.xpath("//Receptor//Domicilio").attribute("pais").to_s
+		@codigoPostal = doc.root.xpath("//Receptor//Domicilio").attribute("codigoPostal").to_s
+	
+	end
 
 end
 
